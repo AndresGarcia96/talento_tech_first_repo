@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora JavaScript</title>
+  </head>
+  <body>
+    <h1>Calculadora en JavaScript</h1>
+    <script>
+      // Paso 1: Declaración de variables
+      let num1, num2, operacion, resultado;
+      let continuar = true;
+
+      // Paso 2: Función para realizar operaciones
+      function realizarOperacion(num1, num2, operacion) {
+        if (operacion === "suma") {
+          return num1 + num2;
+        } else if (operacion === "resta") {
+          return num1 - num2;
+        } else if (operacion === "multiplicacion") {
+          return num1 * num2;
+        } else if (operacion === "division") {
+          if (num2 === 0) {
+            return "Error: No se puede dividir entre cero";
+          } else {
+            return num1 / num2;
+          }
+        } else {
+          return "Error: Operación no válida";
+        }
+      }
+
+      // Paso 4: Bucle para realizar múltiples operaciones
+      while (continuar) {
+        // Solicitar al usuario los números y la operación
+        num1 = parseFloat(prompt("Ingrese el primer número:"));
+        num2 = parseFloat(prompt("Ingrese el segundo número:"));
+        operacion = prompt(
+          "Ingrese la operación (suma, resta, multiplicacion, division):"
+        );
+
+        if (
+          operacion !== "suma" &&
+          operacion !== "resta" &&
+          operacion !== "multiplicacion" &&
+          operacion !== "division"
+        ) {
+          operacion = prompt(
+            "Ingrese un tipo de operación correcto: (suma, resta, multiplicacion, division):"
+          );
+        }
+
+        // Realizar la operación y almacenar el resultado
+        resultado = realizarOperacion(num1, num2, operacion);
+
+        // Mostrar el resultado de la operación en la consola
+        console.log("Resultado: " + resultado);
+
+        // Mostrar el resultado en la página de forma visible
+        alert("El resultado de la operación es: " + resultado);
+
+        // Preguntar al usuario si desea realizar otra operación
+        let respuesta = prompt("¿Desea realizar otra operación? (si/no):");
+        if (respuesta.toLowerCase() === "no" || operacion === "salir") {
+          continuar = false;
+          console.log("¡Gracias por usar la calculadora!"); // Mensaje de despedida
+          alert("¡Gracias por usar la calculadora!"); // Mostrar mensaje de despedida al usuario
+        }
+      }
+    </script>
+  </body>
+</html>
